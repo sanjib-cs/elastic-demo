@@ -7,15 +7,12 @@ import org.springframework.data.domain.PageRequest;
 
 import com.cs.elastic.model.Book;
 
-public interface BookService {
-
-	Book save(Book book);
-
-	void delete(Book book);
-
-	Book findOne(String id);
-
-	Iterable<Book> findAll();
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
+public interface BookService extends GenericService<Book, String>{
 
 	Page<Book> findByAuthor(String author, PageRequest pageRequest);
 

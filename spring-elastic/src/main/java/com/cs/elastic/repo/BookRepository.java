@@ -8,6 +8,11 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 
 import com.cs.elastic.model.Book;
 
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
 public interface BookRepository extends ElasticsearchRepository<Book, String> {
 
     Page<Book> findByAuthor(String author, Pageable pageable);

@@ -8,6 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.stereotype.Component;
 
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
 @Component
 public class ElasticUtil {
 

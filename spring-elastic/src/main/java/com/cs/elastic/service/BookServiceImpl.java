@@ -1,16 +1,21 @@
 package com.cs.elastic.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Service;
 
 import com.cs.elastic.model.Book;
 import com.cs.elastic.repo.BookRepository;
 
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -21,32 +26,17 @@ public class BookServiceImpl implements BookService {
 		this.bookRepository = bookRepository;
 	}
 
-	public Book save(Book book) {
-		return bookRepository.save(book);
-	}
-
-	public void delete(Book book) {
-		bookRepository.delete(book);
-	}
-
-	public Book findOne(String id) {
-		Optional<Book> bookRecord = bookRepository.findById(id);
-		if (bookRecord.isPresent()) {
-			return bookRecord.get();
-		}
-		return null;
-	}
-
-	public Iterable<Book> findAll() {
-		return bookRepository.findAll();
-	}
-
 	public Page<Book> findByAuthor(String author, PageRequest pageRequest) {
 		return bookRepository.findByAuthor(author, pageRequest);
 	}
 
 	public List<Book> findByTitle(String title) {
 		return bookRepository.findByTitle(title);
+	}
+
+	@Override
+	public ElasticsearchRepository<Book, String> getRepo() {
+		return bookRepository;
 	}
 
 }

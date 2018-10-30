@@ -15,6 +15,11 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
 @Configuration
 @EnableElasticsearchRepositories(basePackages = "com.cs.elastic.repository")
 public class ElasticConfig {

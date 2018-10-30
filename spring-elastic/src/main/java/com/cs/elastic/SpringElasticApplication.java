@@ -10,9 +10,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import com.cs.elastic.model.Book;
+import com.cs.elastic.model.Person;
+import com.cs.elastic.repo.PersonRepository;
 import com.cs.elastic.service.BookService;
 import com.cs.elastic.utill.ElasticUtil;
 
+/**
+ * 
+ * @author sanjib.pramanick
+ *
+ */
 @SpringBootApplication(exclude = { ElasticsearchDataAutoConfiguration.class, DataSourceAutoConfiguration.class })
 public class SpringElasticApplication implements CommandLineRunner {
 
@@ -21,6 +28,9 @@ public class SpringElasticApplication implements CommandLineRunner {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private PersonRepository repo;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringElasticApplication.class, args);
@@ -34,6 +44,8 @@ public class SpringElasticApplication implements CommandLineRunner {
 		bookService.save(new Book("1001", "Elasticsearch Basics", "Rambabu Posa", "23-FEB-2017"));
 		bookService.save(new Book("1002", "Apache Lucene Basics", "Rambabu Posa", "13-MAR-2017"));
 		bookService.save(new Book("1003", "Apache Solr Basics", "Rambabu Posa", "21-MAR-2017"));
+		
+		repo.save(new Person("P1001","Sanjib","Pramanick"));
 
 		// fuzzey search
 		Page<Book> books = bookService.findByAuthor("Rambabu", PageRequest.of(0, 10));

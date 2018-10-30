@@ -14,21 +14,19 @@ import lombok.ToString;
  * @author sanjib.pramanick
  *
  */
-@Document(indexName = "demobookindex", type = "books")
+@Document(indexName = "demopersonindex", type = "persons")
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @AllArgsConstructor
-public class Book {
-
+public class Person {
+	
 	@Id
 	private String id;
-
-	private String title;
-
-	private String author;
-
-	private String releaseDate;
+	
+	private String firstName;
+	
+	private String lastName;
 
 }
